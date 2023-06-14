@@ -35,25 +35,27 @@ class StudentDetailFragment : Fragment(), ButtonUpdateClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var student_id=""
-        val txtStudentID=view.findViewById<TextInputEditText>(R.id.txtID)
-        val txtStudentName=view.findViewById<TextInputEditText>(R.id.txtName)
-        val txtBoD=view.findViewById<TextInputEditText>(R.id.txtBoD)
-        val txtPhone=view.findViewById<TextInputEditText>(R.id.txtPhone)
+//        var student_id=""
+//        val txtStudentID=view.findViewById<TextInputEditText>(R.id.txtID)
+//        val txtStudentName=view.findViewById<TextInputEditText>(R.id.txtName)
+//        val txtBoD=view.findViewById<TextInputEditText>(R.id.txtBoD)
+//        val txtPhone=view.findViewById<TextInputEditText>(R.id.txtPhone)
 
-        arguments?.let {
-            student_id=StudentDetailFragmentArgs.fromBundle(requireArguments()).studentId
-        }
+//        arguments?.let {
+//            student_id=
+//        }
 
         detailViewModel=ViewModelProvider(this).get(DetailViewModel::class.java)
-        detailViewModel.fetch(student_id)
+        detailViewModel.fetch(StudentDetailFragmentArgs.fromBundle(requireArguments()).studentId)
 
-        var imageView = view.findViewById<ImageView>(R.id.imageView2)
-        var progressBar = view.findViewById<ProgressBar>(R.id.progressBar)
+        observerViewModel()
 
-        detailViewModel.studentLD.observe(viewLifecycleOwner, Observer {
-           dataBinding.user=it
-        })
+//        var imageView = view.findViewById<ImageView>(R.id.imageView2)
+//        var progressBar = view.findViewById<ProgressBar>(R.id.progressBar)
+
+//        detailViewModel.studentLD.observe(viewLifecycleOwner, Observer {
+//           dataBinding.user=it
+//        })
 
 
 //        detailViewModel.studentLD.observe(viewLifecycleOwner){studentDetail ->
@@ -67,5 +69,11 @@ class StudentDetailFragment : Fragment(), ButtonUpdateClickListener {
 
     override fun onButtonUpdateClick(v: View) {
 
+    }
+
+    fun observerViewModel(){
+        detailViewModel.studentLD.observe(viewLifecycleOwner, Observer {
+            dataBinding.user=it
+        })
     }
 }
