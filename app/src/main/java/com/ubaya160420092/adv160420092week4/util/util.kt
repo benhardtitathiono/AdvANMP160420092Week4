@@ -12,11 +12,17 @@ import android.widget.ProgressBar
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.databinding.BindingAdapter
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import com.ubaya160420092.adv160420092week4.R
 import com.ubaya160420092.adv160420092week4.view.MainActivity
 import java.lang.Exception
+
+@BindingAdapter("android:imageUrl","android:progressBar")
+fun loadPhotoURL(view:ImageView, url:String, pb:ProgressBar){
+    view.loadImage(url, pb)
+}
 
 fun ImageView.loadImage(url: String?, progressBar: ProgressBar) {
     Picasso.get()
