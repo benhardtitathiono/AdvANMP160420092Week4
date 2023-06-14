@@ -14,7 +14,7 @@ import com.ubaya160420092.adv160420092week4.R
 import com.ubaya160420092.adv160420092week4.util.loadImage
 import com.ubaya160420092.adv160420092week4.viewmodel.DetailViewModel
 
-class StudentDetailFragment : Fragment() {
+class StudentDetailFragment : Fragment(), ButtonUpdateClickListener {
     private lateinit var detailViewModel: DetailViewModel
 
     override fun onCreateView(
@@ -51,5 +51,9 @@ class StudentDetailFragment : Fragment() {
             txtBoD.setText(studentDetail.bod.toString())
             txtPhone.setText(studentDetail.phone.toString())
         }
+    }
+
+    override fun onButtonUpdateClick(v: View) {
+
     }
 }

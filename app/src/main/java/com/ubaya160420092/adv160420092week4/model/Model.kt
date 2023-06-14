@@ -6,12 +6,12 @@ data class Student(
     val id:String?,
 
     @SerializedName("student_name")
-    val name:String?,
+    var name:String?,
 
     @SerializedName("birth_of_date")
-    val bod:String?,
+    var bod:String?,
 
-    val phone:String?,
+    var phone:String?,
 
     @SerializedName("photo_url")
     val photoUrl:String?,
